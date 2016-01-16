@@ -2,29 +2,19 @@ Ejercicios sobre Programación Orientada a Objetos
 =================================================
 
 
-Este documento ha sido elaborado con el editor /procesador Markdown laverna.cc
+### Notación
+En los ejercicios que se presentan a continuación, se especifican el tipo de las variables utilizadas ya que algunos lenguajes de programación -a diferencia de `Python`- son tipados. No tengáis en cuenta estos detalles cuando consideréis que no son necesarios.
 
-
-### Documentación
-
-Vas a tener que tomar múltiples decisiones a la hora de construir un programa bajo el paradigma de la Programación Orientada a Objetos (POO). Este documento [Working Classes][2] te ayudará no sólo a tomar estas decisiones de manera rápida, sino también a construir una arquitectura de la aplicación que respete los principios [SOLID][3].
-Cómo manejar los errores y la programación por contrato, en el documento [Programación Defensiva][4].
+## Cuenta Corriente
+Construye una clase de nombre `CuentaCorriente` que permita almacenar los datos asociados a la cuenta bancaria de un cliente, e interactuar con ellos. Este es nuestro __ADT__.(POO). Este documento [Working Classes] te ayudará no sólo a tomar estas decisiones de manera rápida, sino también a construir una arquitectura de la aplicación que respete los principios [SOLID].
+Cómo manejar los errores y la programación por contrato, en el documento [Programación Defensiva].
 
 ## SOLID
 
 Aplicad los principios __SOLID__ que ya conocéis:
 
  - `SRP` (S) o Principio de Única Responsabilidad (Single responsibility principle): una clase sólo debe tener un motivo para cambiar.
- - `LSP` (L) o Principio de sustitución de Liskov: los objetos de un programa deberían ser reemplazables por instancias de sus subtipos sin alterar el correcto funcionamiento del programa (__herencia__ y __polimorfismo__).
 
-### Otros ejercicios
-Recuerda que puedes resolver también bajo este paradigma los ejercicios propuestos en el documento [Ejercicios propuestos matrices y recursividad][5]
-
-### Notación
-En los ejercicios que se presentan a continuación, se especifican el tipo de las variables utilizadas ya que algunos lenguajes de programación -a diferencia de `Python`- son tipados. No tengáis en cuenta estos detalles cuando consideréis que no son necesarios.
-
-## Cuenta Corriente
-Construye una clase de nombre `CuentaCorriente` que permita almacenar los datos asociados a la cuenta bancaria de un cliente, e interactuar con ellos. Este es nuestro __ADT__.
 
 Esta clase tendrá las siguientes propiedades, métodos y constructores:
 
