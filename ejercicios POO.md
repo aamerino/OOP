@@ -3,7 +3,6 @@ Ejercicios sobre Programación Orientada a Objetos
 
 
 Este documento ha sido elaborado con el editor /procesador Markdown laverna.cc
-Este es el [fichero md][1] (por si le queréis echar un ojo para Lenguaje de Marcas)
 
 
 ### Documentación
@@ -119,10 +118,3 @@ Construye una clase de nombre `Fecha` que represente el __tipo de dato abstracto
  - El capítulo 28 del [libro de Python][6] que seguimos se desarrolla un ejercicio mediante el que se ilustran los conceptos de POO. Conviene que le echéis un ojo.
  - En el capítulo 27 se explican los conceptos básicos de la POO.
 
-
-  [1]: https://drive.google.com/open?id=0B68CprMt4M4PQXhpbXdGYkRDQ0U
-  [2]: https://drive.google.com/open?id=18ij6-5LyZ6dDa0-aT6bov3zcs-FLS4OgAiqH-c1AqwA
-  [3]: https://es.wikipedia.org/wiki/SOLID_(object-oriented_design)
-  [4]: https://drive.google.com/open?id=1HU6iykl8WmpXwoCpjabPoa93W8xbghD0D-laNTh8-wE
-  [5]: https://drive.google.com/open?id=1bj1aOMnZEJAUiztR1TUMfimk3Gohtz3BUHQNLJUH6Fo
-  [6]: https://drive.google.com/open?id=0B68CprMt4M4PRmJadlhiWlRFTGs
