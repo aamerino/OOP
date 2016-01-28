@@ -18,10 +18,15 @@ public class TablaDeAsignacion {
 			return this.tabla.length;
 		}
 		
-		public Boolean letraPermitida(char letra){
-			String tablaString = String.valueOf(tabla);
-			// contains() requiere una secuencia de caracteres: convertir el caracter letra a un string
-			return tablaString.contains( Character.toString(letra) );
+		public boolean letraPermitida(char letra){
+			String expressionRegular = "[";
+			for (int i = 0; i < this.tabla.length; i ++){
+				expressionRegular += (this.tabla[i]);
+				
+			}
+			expressionRegular += "]";
+			
+			return String.valueOf(letra).matches(expressionRegular);
 		}
 		
 		public char calcularLetra(String DNI){

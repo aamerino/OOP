@@ -9,6 +9,11 @@ public class MainTablaDeAsignacion {
 		}else{
 			System.out.println("getLetra Fail");
 		}
+		if (tabla.letraPermitida('A')){
+			System.out.println("LetraPermitida Ok");
+		}else{
+			System.out.println("Letrapermitida Fail");
+		}
 
 	}
 
