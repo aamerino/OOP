@@ -26,5 +26,11 @@ public class Dni {
 		return this.getDni().matches(this.getExpressionRegularNumero());
 	}
 	
+	public String getLetra(){
+		Matcher matcher = pattern.matcher(this.getDni());
+		return '[a-Z]'
+	}
+		
+	}
 	
 }
