@@ -9,9 +9,14 @@ public class MainDni {
 		}else{
 			System.out.println("CheckParteNumero Fail");
 		};
-		String dni = "43154813M";
-		dni.matches("[0-9]{8}");
-
+		
+		Dni dniMalo = new Dni("43154813N");
+		if (dniMalo.checkNumeroDni()){
+			System.out.println("CheckParteNumero Ok");
+		}else{
+			System.out.println("CheckParteNumero Fail");
+		};
+		
 	}
 
 }

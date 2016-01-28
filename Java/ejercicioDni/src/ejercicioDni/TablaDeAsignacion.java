@@ -6,12 +6,12 @@ public class TablaDeAsignacion {
 
 		public char getLetra(int posicion){
 			// excepcion 
-			//try{
+			try{
 				return this.tabla[posicion];
-			//}
-			//catch(ExceptionClassName parameterName){
-			//	return 'Posicion letra fuera de rango';
-			//}
+			}
+			catch(Exception parameterName){
+				return 'ñ';
+			}
 		}
 		
 		public int getModulo(){
@@ -22,7 +22,6 @@ public class TablaDeAsignacion {
 			String expressionRegular = "[";
 			for (int i = 0; i < this.tabla.length; i ++){
 				expressionRegular += (this.tabla[i]);
-				
 			}
 			expressionRegular += "]";
 			
