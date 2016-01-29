@@ -21,6 +21,7 @@ public class MainDniNie {
 						}};
 		for (Entry<String, String[]> grupoNumeros  : listaCasos.entrySet()){
 			System.out.println(grupoNumeros.getKey());
+			System.out.println();
 			for (String valorNie: grupoNumeros.getValue()){
 				DniNie casoTest = new DniNie(valorNie);
 				if (casoTest.check()){
