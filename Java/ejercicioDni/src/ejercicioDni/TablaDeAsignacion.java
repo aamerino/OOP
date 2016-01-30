@@ -1,21 +1,36 @@
 package ejercicioDni;
 
+import java.util.Arrays;
+
 public class TablaDeAsignacion {
 
 		final char[] tabla = {'T', 'R', 'W', 'A', 'G', 'M', 'Y', 'F', 'P', 'D', 'X', 'B', 'N', 'J', 'Z', 'S', 'Q', 'V', 'H', 'L', 'C', 'K', 'E' }; 
 
+		final char[] tablaNif = {'X', 'Y', 'Z'};
+		
 		public char getLetra(int posicion){
-			// excepcion 
+	
 			try{
 				return this.tabla[posicion];
 			}
 			catch(Exception parameterName){
-				return 'ñ';
+				return 'I';
 			}
 		}
 		
+		
+		public char[] getTablaNif() {
+			return tablaNif;
+		}
+
+
 		public int getModulo(){
 			return this.tabla.length;
+		}
+		
+		public int getNumeroLetraNif(char letra){
+			return Arrays.asList(this.getTablaNif()).indexOf(letra);
+
 		}
 		
 		public boolean letraPermitida(char letra){

@@ -1,8 +1,10 @@
 package ejercicioDni;
 
+import java.util.regex.Matcher;
+
 public class DniCif {
 	
-		private String dni  = null;
+		private Dni dni  = new Dni();
 		// Composici車n (agregaci車n) "Has - a" / "Tiene - un"
 		private TablaDeAsignacion tabla = new TablaDeAsignacion();
 
@@ -15,77 +17,97 @@ public class DniCif {
 		/* Encapsulacion */
 		
 		public void setDni(String cadena){
-			this.dni = cadena;
+			this.dni.setNumero(cadena);
 		}
 
-		public String getDni(){
+		public Dni getDni(){
 			return this.dni;
 		}
 	
-		
-		/*
-		 * L車gica 
-		 */
+		public TablaDeAsignacion getTabla() {
+			return tabla;
+		}
+
+		public void setTabla(TablaDeAsignacion tabla) {
+			this.tabla = tabla;
+		}
 	
 		/* Interfaz P迆blica */
 		
-		public Boolean checkCIF(){
-			return this.checkDni() && this.checkLetra();
-		}
+
+
 		
-		public Boolean checkDni(){
-			return ( checkLongitud() && stringEsNumero( getParteNumericaDni() ) );
-		}
+
 		
-		public Boolean checkLetra(){
-			if (getNumeroSano() ) {
-				setLetraSana ( Character.isUpperCase(getParteAlfabeticaDni()) && checkLetraValida() );
-				return getLetraSana();
-			}
-			else {
-				return false;
-			}
-		}
-						
-		public Character obtenerLetra(){
-			// calcularLetra no puede ejecutarse si antes no se cumplen las condiciones previas en checkDni
-			// y checkletra
-			if ( getNumeroSano() ){
-				return this.tabla.calcularLetra( getParteNumericaDni() );
-			}
-			else // EXCEPCION: aun no sabemos implementarlas - este c車digo no es admisible
-				return getParteAlfabeticaDni();
-		}
-	
-	
-		public Boolean checkLongitud() {
-			return getDni().length() == 9;
-		}
-		
-		public boolean stringEsNumero(){
-			for( int i=0; i < cadena.length(); i++ ){
-				if ( ! Character.isDigit(cadena.charAt(i)) ){
-					return false;
+		//Necesita refactorizacion, solo sirve para 2 casos....
+		public String getParteNumerica() {
+			//try{
+				//if (!this.getDni().check()){
+					//return "0"; 
+				//}
+				if (this.isDni()){
+					Matcher matcher = ClasePattern.getNumerosDni().matcher(this.getDni().getNumero());
+					matcher.find();
+					return matcher.group(0);
+				}else if(this.isNif()){
+					Matcher matchernif = ClasePattern.getNumerosNif().matcher(this.getDni().getNumero());
+					matchernif.find();
+					return matchernif.group(0);
+					
 				}
-				else;
-			}
-			return true;
-		}		
+				
+			//}catch(Exception e){
+				//return "0";
 			
-		public String getParteNumericaDni() {
-			return (String) dni.substring(0, dni.length() - 1);
+			//wtf????
+			return "0";
+		
+			}
+	
+		public String getParteAlfabeticaDni() {
+				
+				Matcher matcher = ClasePattern.getGetletradni().matcher(this.getDni().getNumero());
+				if (matcher.find()){
+					return this.getDni().getNumero().substring(this.getDni().getNumero().length() - 1); 
+				}
+				return "TILT";
 		}
 		
-		public char getParteAlfabeticaDni() {
-			return dni.charAt(dni.length() - 1);
-		}
+
+		
+		public char obtenerLetra(){
+				if (this.isNif()){
+					return this.tabla.calcularLetra( this.convertirNif() );
+				}
+	
+				return this.tabla.calcularLetra( this.getParteNumerica() );
+			}
 		
 		public Boolean checkLetraValida() {
-			if ( getNumeroSano() ) {
-				return getParteAlfabeticaDni() == obtenerLetra();
-			}
-			else
-				return false;
-		}
+	
+			return this.getParteAlfabeticaDni().charAt(0) == (this.obtenerLetra());
 
-}
+		}
+		public String convertirNif(){
+			String numeroNif = this.getDni().getNumero();
+			return numeroNif.replace(this.getPrimeraLetraNif(), (char) this.getTabla().getNumeroLetraNif(this.getPrimeraLetraNif()));
+
+		}
+		
+		public char getPrimeraLetraNif(){
+			if (this.isNif()){
+				return this.getDni().getNumero().substring(0, 1).charAt(0);
+			}else{
+				return 'I';
+			}
+		}
+		public Boolean isDni(){
+			Matcher matcher = ClasePattern.getNumerosDni().matcher(this.getDni().getNumero());
+			return matcher.find();
+		}
+		
+		public Boolean isNif(){
+			Matcher matchernif = ClasePattern.getNumerosNif().matcher(this.getDni().getNumero());
+			return matchernif.find();
+		}
+		}

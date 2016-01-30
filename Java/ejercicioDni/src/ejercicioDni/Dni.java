@@ -1,36 +1,30 @@
 package ejercicioDni;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 public class Dni {
-	private String dni;
-	private TablaDeAsignacion tabla = new TablaDeAsignacion();
-	final private String ExpressionRegularNumero = "\\d{8}."; 
+	String numero;
 	
-	public Dni (String dni){
-		this.setDni(dni); 
+	public Dni(){
+		this.setNumero(null);
+	}
+	
+	public Dni (String numero){
+		this.setNumero(numero);
+	}
+
+	public String getNumero() {
+		return numero;
+	}
+
+	public void setNumero(String numero) {
+		this.numero = numero;
+	}
+	public boolean check(){
+		Pattern pattern = ClasePattern.getCheckdnicif();
+		Matcher matcher = pattern.matcher(this.getNumero());
+		return matcher.matches();
 		
 	}
-
-	public String getDni() {
-		return dni;
 	}
-
-	public void setDni(String dni) {
-		this.dni = dni;
-	}
-	
-	public String getExpressionRegularNumero() {
-		return ExpressionRegularNumero;
-	}
-
-	public boolean checkNumeroDni(){
-		return this.getDni().matches(this.getExpressionRegularNumero());
-	}
-	
-	public String getLetra(){
-		Matcher matcher = pattern.matcher(this.getDni());
-		return '[a-Z]'
-	}
-		
-	}
-	
-}
