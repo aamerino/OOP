@@ -6,7 +6,7 @@ public class TablaDeAsignacion {
 
 		final char[] tabla = {'T', 'R', 'W', 'A', 'G', 'M', 'Y', 'F', 'P', 'D', 'X', 'B', 'N', 'J', 'Z', 'S', 'Q', 'V', 'H', 'L', 'C', 'K', 'E' }; 
 
-		final char[] tablaNif = {'X', 'Y', 'Z'};
+		final Character[] tablaNif = {'X', 'Y', 'Z'};
 		
 		public char getLetra(int posicion){
 	
@@ -19,7 +19,7 @@ public class TablaDeAsignacion {
 		}
 		
 		
-		public char[] getTablaNif() {
+		public Character[] getTablaNif() {
 			return tablaNif;
 		}
 
@@ -28,9 +28,12 @@ public class TablaDeAsignacion {
 			return this.tabla.length;
 		}
 		
-		public int getNumeroLetraNif(char letra){
-			return Arrays.asList(this.getTablaNif()).indexOf(letra);
-
+		public char getNumeroLetraNif(char letra){
+			int numero = Arrays.asList(this.getTablaNif()).indexOf(letra);
+			char charNumero = Integer.toString(numero).charAt(0);
+			return charNumero;
+			
+			
 		}
 		
 		public boolean letraPermitida(char letra){

@@ -50,7 +50,7 @@ public class DniCif {
 					matcher.find();
 					return matcher.group(0);
 				}else if(this.isNif()){
-					Matcher matchernif = ClasePattern.getNumerosNif().matcher(this.getDni().getNumero());
+					Matcher matchernif = ClasePattern.getNumerosDni().matcher(this.convertirNif());
 					matchernif.find();
 					return matchernif.group(0);
 					
@@ -76,9 +76,6 @@ public class DniCif {
 
 		
 		public char obtenerLetra(){
-				if (this.isNif()){
-					return this.tabla.calcularLetra( this.convertirNif() );
-				}
 	
 				return this.tabla.calcularLetra( this.getParteNumerica() );
 			}
@@ -90,7 +87,7 @@ public class DniCif {
 		}
 		public String convertirNif(){
 			String numeroNif = this.getDni().getNumero();
-			return numeroNif.replace(this.getPrimeraLetraNif(), (char) this.getTabla().getNumeroLetraNif(this.getPrimeraLetraNif()));
+			return numeroNif.replace(this.getPrimeraLetraNif(), this.getTabla().getNumeroLetraNif(this.getPrimeraLetraNif()));
 
 		}
 		
@@ -107,7 +104,7 @@ public class DniCif {
 		}
 		
 		public Boolean isNif(){
-			Matcher matchernif = ClasePattern.getNumerosNif().matcher(this.getDni().getNumero());
+			Matcher matchernif = ClasePattern.getIsNif().matcher(this.getDni().getNumero());
 			return matchernif.find();
 		}
 		}
