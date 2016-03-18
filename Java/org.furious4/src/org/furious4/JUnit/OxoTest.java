@@ -30,4 +30,9 @@ public class OxoTest {
 		} 
 	}
 	
+	@Test
+	public void dadoUnTableroCuandoDamosValorDeJugadorEntoncesDevuelveTrue(){
+		Oxo.Ficha jugador = Oxo.Ficha.O;
+		assertTrue(Oxo.ponerFicha(0, 0, jugador));
+	}
 }

@@ -3,37 +3,29 @@ package org.furious4.logica;
 
 public class Oxo {
 	
-	public enum Ficha{
-		X , O;
-	}
+	public enum Ficha{X , O};
 
 	public static final int FILAS = 3;
 	public static final int COLUMNAS = 3;
-	Ficha[][] tablero = new Ficha[FILAS][COLUMNAS];
+	public static Ficha[][] tablero = new Ficha[FILAS][COLUMNAS];
 	
 	public static boolean ponerFicha(int fila, int columna){
-		if (checkFila(fila) && checkColumna(columna)){
+		return (checkLimites(fila) && checkLimites(columna));
+	};
+	
+	public static boolean ponerFicha(int fila, int columna, Ficha fichaJugador){
+		if(checkLimites(fila) && checkLimites(columna)){
+			tablero[fila][columna] = fichaJugador;
 			return true;
 		}else{
 			return false;
 		}
-	}
-	
-	public static boolean checkFila(int fila){
-		return checkLimites(fila);
-	}
-	
-	public static boolean checkColumna(int columna){
-		return checkLimites(columna);
 	}
 	
 	public static boolean checkLimites(int posicion){
-		if(posicion < 1 || posicion > 3){
-			return false;
-		}else{
-			return true;
-		}
+		return(posicion < 1 || posicion > 3);
 	}
+	
 	public static void inicializarTablero(Ficha[][] matriz){
 	
 	}
