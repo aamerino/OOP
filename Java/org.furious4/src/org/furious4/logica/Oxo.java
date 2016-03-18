@@ -1,14 +1,15 @@
 package org.furious4.logica;
 
+
 public class Oxo {
 	
 	public enum Ficha{
 		X , O;
 	}
 
-	public static final int filas = 3;
-	public static final int columnas = 3;
-	Fichas[][] tablero = new Fichas[filas][columnas];
+	public static final int FILAS = 3;
+	public static final int COLUMNAS = 3;
+	Ficha[][] tablero = new Ficha[FILAS][COLUMNAS];
 	
 	public static boolean ponerFicha(int fila, int columna){
 		if (checkFila(fila) && checkColumna(columna)){
@@ -32,6 +33,9 @@ public class Oxo {
 		}else{
 			return true;
 		}
+	}
+	public static void inicializarTablero(Ficha[][] matriz){
+	
 	}
 
 

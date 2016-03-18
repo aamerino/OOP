@@ -6,10 +6,7 @@ import org.furious4.logica.Oxo;
 import org.junit.Test;
 
 public class OxoTest {
-	public enum Ficha{
-		X , O;
-	}
-	Ficha[][] tablero = new Ficha[3][3];
+	Oxo.Ficha[][] tablero = new Oxo.Ficha[3][3];
 	
 	@Test
 	public void cuandoUnaFichaFueraDeFilaEntoncesFalse() {
@@ -23,8 +20,8 @@ public class OxoTest {
 	
 	@Test
 	public void dadoUnTableroCuandoInicializamosPosicionEntoncesTodosNull(){
-		Oxo.inicializarTablero(tablero);
 		assertEquals(tablero.length, 3);
+		Oxo.inicializarTablero(tablero);
 			
 		for (int fila = 0; fila < tablero.length; fila++){
 			for (int columna = 0; columna < tablero[fila].length; columna++){
@@ -32,4 +29,5 @@ public class OxoTest {
 			}
 		} 
 	}
+	
 }
