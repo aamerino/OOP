@@ -1,6 +1,7 @@
 package org.furious4.logica;
 
-import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.*;
+
 
 public class Oxo {
 
@@ -27,6 +28,14 @@ public class Oxo {
 
 	public static void inicializarTablero(Ficha[][] matriz) {
 	}
+	
+	public static void resetearTablero(Ficha[][] matriz){
+		for (int fila = 0; fila < matriz.length; fila++) {
+			for (int columna = 0; columna < matriz[fila].length; columna++) {
+				matriz[fila][columna] = null;
+			}
+		}
+	}
 
 	public static int[] devolverFilaColumna(Integer asds) {
 		return PosicionTablero.filaColumna(asds);
@@ -40,52 +49,58 @@ public class Oxo {
 		return ponerFicha(matriz, fila, columna, jugador);
 	}
 
-	public static Object checkFilas(Ficha[] fila) {
+	public static Object checkFilas(Ficha[][] matriz){
+		for(Ficha[] fila:matriz){
+			if(Oxo.checkFila(fila) != null){
+				return Oxo.checkFila(fila);
+			}
+		}
+		return null;
+	}
+
+	private static Object checkFila(Ficha[]fila){
 		for (Ficha valor : fila) {
 			for (int i = 0; i < fila.length; i++) {
-				if (valor != fila[i]) {
+				if (valor != fila[i] || valor == null) {
 					return null;
 				}
 			}
 		}
 		return fila[0];
 	}
-
 	public static Ficha checkColumnas(Ficha[][] matriz) {
-		assertFalse(matriz.length == matriz[0].length);
+		assertTrue(matriz.length == matriz[0].length);
 
 		for (int columna = 0; columna < matriz[0].length; columna++) {
-			int filasArray = matriz.length;
-			for (int i = 0; i < filasArray; i++) {
-				if (matriz[0][columna] != matriz[0][i]) {
-					return null;
-				}else{
-					;
-				}
-				return matriz[columna][0];
-			}
+			if(Oxo.checkColumna(matriz, columna) != null){
+				return Oxo.checkColumna(matriz, columna);
+			};
 		}
 		//Ayy lmao
 		return null;
 		}
-	public static Ficha checkColumna(Ficha[][] matriz, int columna) {
+	private static Ficha checkColumna(Ficha[][] matriz, int columna) {
 		for (int i = 0; i < matriz.length; i++){
-			
+			if (matriz[0][columna] != matriz[i][columna] || matriz[0][columna] == null){
+				return null;
+			}
 		}
+		return matriz[0][columna];
 	}
 	
 	public static Object checkDiagonales(Ficha[][] matriz) {
-		assert(matriz.length == matriz[0].length);
+		assertTrue(matriz.length == matriz[0].length);
 		int contadorDiagonalA = 0;
 		int contadorDiagonalB = 0;
 		int filasArray = matriz.length;
-		for (int i = 0, j = filasArray; i < filasArray; i++ , j--){
-			if (matriz[0][0] == matriz[i][i]){
+		int lmao = filasArray-1;
+		for (int i = 0, j = lmao; i < filasArray; i++ , j--){
+			if (matriz[0][0] == matriz[i][i] && matriz[i][i] != null){
 				contadorDiagonalA++;
 			}else{
 				;
 			}
-			if (matriz[0][filasArray] != matriz[i][j]){
+			if (matriz[0][lmao] == matriz[i][j] && matriz[i][j] != null){
 				contadorDiagonalB++;
 			}else{
 				;
@@ -95,7 +110,19 @@ public class Oxo {
 			return matriz[0][0];
 		}
 		if (contadorDiagonalB == filasArray){
-			return matriz[0][filasArray];
+			return matriz[0][lmao];
+		}
+		return null;
+	}
+
+	public static Object checkGanador(Ficha[][] matriz) {
+		assertTrue(matriz.length == matriz[0].length);
+		if(Oxo.checkFilas(matriz) != null){
+			return Oxo.checkFilas(matriz);
+		}else if(Oxo.checkColumnas(matriz) != null){
+			return Oxo.checkColumnas(matriz);
+		}else if(Oxo.checkDiagonales(matriz) != null){
+			return Oxo.checkDiagonales(matriz);
 		}
 		return null;
 	}
