@@ -50,6 +50,7 @@ public class Oxo {
 	}
 
 	public static Object checkFilas(Ficha[][] matriz){
+		assertTrue(Oxo.tableroInvariantes(matriz));
 		for(Ficha[] fila:matriz){
 			if(Oxo.checkFila(fila) != null){
 				return Oxo.checkFila(fila);
@@ -69,27 +70,30 @@ public class Oxo {
 		return fila[0];
 	}
 	public static Ficha checkColumnas(Ficha[][] matriz) {
-		assertTrue(matriz.length == matriz[0].length);
-
+		assertTrue(Oxo.tableroInvariantes(matriz));
 		for (int columna = 0; columna < matriz[0].length; columna++) {
 			if(Oxo.checkColumna(matriz, columna) != null){
+				assertTrue(Oxo.tableroInvariantes(matriz));
 				return Oxo.checkColumna(matriz, columna);
 			};
 		}
 		//Ayy lmao
+		assertTrue(Oxo.tableroInvariantes(matriz));
 		return null;
 		}
 	private static Ficha checkColumna(Ficha[][] matriz, int columna) {
 		for (int i = 0; i < matriz.length; i++){
 			if (matriz[0][columna] != matriz[i][columna] || matriz[0][columna] == null){
+				assertTrue(Oxo.tableroInvariantes(matriz));
 				return null;
 			}
 		}
+		assertTrue(Oxo.tableroInvariantes(matriz));
 		return matriz[0][columna];
 	}
 	
 	public static Object checkDiagonales(Ficha[][] matriz) {
-		assertTrue(matriz.length == matriz[0].length);
+		assertTrue(Oxo.tableroInvariantes(matriz));
 		int contadorDiagonalA = 0;
 		int contadorDiagonalB = 0;
 		int filasArray = matriz.length;
@@ -107,9 +111,11 @@ public class Oxo {
 			}
 		}
 		if (contadorDiagonalA == filasArray){
+			assertTrue(Oxo.tableroInvariantes(matriz));
 			return matriz[0][0];
 		}
 		if (contadorDiagonalB == filasArray){
+			assertTrue(Oxo.tableroInvariantes(matriz));
 			return matriz[0][lmao];
 		}
 		return null;
@@ -118,16 +124,35 @@ public class Oxo {
 	public static Object checkGanador(Ficha[][] matriz) {
 		assertTrue(matriz.length == matriz[0].length);
 		if(Oxo.checkFilas(matriz) != null){
+			assertTrue(Oxo.tableroInvariantes(matriz));
 			return Oxo.checkFilas(matriz);
 		}else if(Oxo.checkColumnas(matriz) != null){
+			assertTrue(Oxo.tableroInvariantes(matriz));
 			return Oxo.checkColumnas(matriz);
 		}else if(Oxo.checkDiagonales(matriz) != null){
+			assertTrue(Oxo.tableroInvariantes(matriz));
 			return Oxo.checkDiagonales(matriz);
 		}
+		assertTrue(Oxo.tableroInvariantes(matriz));
 		return null;
 	}
 
 		
 	
-	
+	private static Boolean tableroInvariantes(Ficha[][] matriz){
+		if(matriz.length != matriz[0].length){
+			return false;
+		}
+		Ficha jugadorO = Ficha.O;
+		Ficha jugadorX = Ficha.X;
+		for (Ficha[] fila:tablero) {
+			for(Ficha ficha:fila){ 
+				if(ficha != jugadorO && ficha != jugadorX && ficha != null ){
+					assertTrue(Oxo.tableroInvariantes(matriz));
+					return false;
+				};
+			}
+		}
+		return true;
+	}
 }
