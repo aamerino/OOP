@@ -1,0 +1,3 @@
+[submodule "Java/tdd-java-ch04-ship"]
+	path = Java/tdd-java-ch04-ship
+	url = https://github.com/aamerino/tdd-java-ch04-ship.git
