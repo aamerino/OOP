@@ -38,7 +38,6 @@ i = 0
 while i < 1000:
 
     numeroRandom = random.randint(0, 1000)
-    print(numeroRandom)
     if not (raizcuadrada(numeroRandom) - math.sqrt(numeroRandom) < epsilon):
         print("Raiz cuadrada ", numeroRandom, " -> FAIL")
     i += 1
@@ -48,7 +47,6 @@ print('---------------------------NUMEROS FLOAT------------------')
 i = 0
 while i < 1000:
     numeroRandom = random.uniform(0, 1000)
-    print(numeroRandom)
     if not (raizcuadrada(numeroRandom) - math.sqrt(numeroRandom) < epsilon):
         print("Raiz cuadrada ", numeroRandom, " -> FAIL")
     i += 1
